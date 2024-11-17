@@ -2,12 +2,12 @@
     <header>
       <div class="container">
         <div class="logo">
-          <img src="/Images/logo.png" alt="Phone Store Logo">
+          <img src="/shop-project/src/assets/quanao/logomixi.png" alt="Phone Store Logo">
         </div>
         <nav>
           <ul>
             <li><router-link to="/">Trang Chủ</router-link></li>
-            <li><router-link to="/dienthoai">Điện Thoại</router-link></li>
+            <li><router-link to="/sanpham">Sản phẩm</router-link></li>
             <li><router-link to="/khuyenmai">Khuyến Mãi</router-link></li>
             <li><router-link to="/gioithieu">Giới Thiệu</router-link></li>
             <li><router-link to="/lienhe">Liên Hệ</router-link></li>

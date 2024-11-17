@@ -1,6 +1,7 @@
 <template>
     <div>
       <h1>TẤT CẢ SẢN PHẨM</h1>
+      <h2 class="menu-title">Khám Phá Sản Phẩm Của Chúng Tôi</h2>
       <div class="product-list">
         <Product v-for="item in products" :key="item.id" :product="item" />
       </div>
@@ -19,6 +20,8 @@
     data() {
       return {
         products: items,
+        currentpage:1,
+        limit:4 ,
       };
     },
   };

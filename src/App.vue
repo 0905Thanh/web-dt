@@ -1,10 +1,30 @@
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div id="app">
+    <ComHeader />  <!-- Sử dụng ComHeader tại đây -->
+    <router-view /> <!-- Nơi hiển thị các route -->
+    <ComHome /> 
+    <ComFooter />   <!-- Sử dụng ComFooter tại đây -->
+  </div>
 </template>
+<script>
+// b1: import vào
+
+import ComHeader from './components/ComHeader.vue'
+import ComHome from './components/ComHome.vue';
+import ComFooter from './components/ComFooter.vue'
+export default {
+  name: 'App',
+  components: {
+
+    ComHeader,
+    ComHome,
+    ComFooter,
+ 
+  }
+}
+</script>
+
 
 <style>
 #app {
