@@ -24,7 +24,7 @@
          </div>
      </header>
   <!-- lấy nội dung component được link tới thì dùng -->
-  <router-view/>
+  <!-- <router-view/> -->
  </template>
  
  <script>

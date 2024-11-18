@@ -3,12 +3,11 @@
       <div class="footer-container">
         <div class="footer-column">
           <h3>Liên lạc với chúng tôi qua email</h3>
-          <p>support@phonestore.com</p>
+          <p>support@mixistore.com</p>
         </div>
         <div class="footer-column">
           <h3>Sản phẩm</h3>
           <ul>
-            <li><router-link to="/dienthoai">Điện Thoại</router-link></li>
             <li><router-link to="/khuyenmai">Khuyến Mãi</router-link></li>
             <li><router-link to="/lienhe">Liên Hệ</router-link></li>
           </ul>

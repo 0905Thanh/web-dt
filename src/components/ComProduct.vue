@@ -1,5 +1,6 @@
+<!-- ComProduct -->
 <template>
-  <div class="menu-item">
+  <div class="menu-item" @click="addToCart">
     <img :src="product.image" alt="Product Image" v-if="product.image">
     <div class="menu-item-info">
       <h3>{{ product.name }}</h3>
@@ -9,6 +10,7 @@
 </template>
 
 <script>
+import eventBus from '../eventBus';
 export default {
   props: ['product'],
   methods: {
@@ -17,7 +19,10 @@ export default {
         style: 'currency',
         currency: 'VND'
       }).format(price);
-    }
+    },
+    addToCart() {
+      eventBus.emit('add-to-cart', this.product.id); // Gửi sự kiện với ID sản phẩm
+    },
   }
 }
 </script>
@@ -28,6 +33,7 @@ export default {
   margin: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  cursor: pointer; 
 }
 .menu-item img {
   width: 100%;

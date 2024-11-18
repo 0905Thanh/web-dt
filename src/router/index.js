@@ -1,7 +1,7 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
 import ComHeader from '@/components/ComHeader.vue';
-import ComHome from '../components/ComHome.vue';
+import ComHome from '@/components/ComHome.vue';
 import ComFooter from '@/components/ComFooter.vue';
 import ComProduct from '@/components/ComProduct.vue';
 import ComKhuyenMai from '@/components/ComKhuyenMai.vue';
@@ -9,6 +9,8 @@ import ComLienHe from '@/components/ComLienHe.vue';
 import ComGioiThieu from '@/components/ComGioiThieu.vue';
 import ComLogin from '@/components/ComLogin.vue';
 import ComRegister from '@/components/ComRegister.vue';
+import ComCart from '@/components/ComCart.vue';
+
 const routes = [
   {
     path: '/', // Thay đổi đường dẫn để dễ hiểu hơn
@@ -55,6 +57,11 @@ const routes = [
     name: 'Login',
     component: ComLogin,
   },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: ComCart,
+  }
   // {
   //   path: '/about',
   //   name: 'about',

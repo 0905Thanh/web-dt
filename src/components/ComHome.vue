@@ -16,6 +16,7 @@
 <script>
 import Product from './ComProduct.vue'; // Đảm bảo import đúng component
 import items from '../data/items'; // Đảm bảo đường dẫn này đúng
+import eventBus from '../eventBus';
 
 export default {
   name: 'ComHome',
@@ -26,6 +27,21 @@ export default {
     return {
       products: items, // Danh sách sản phẩm
     };
+  },
+  computed: {
+    uniqueProducts() {
+      const seen = new Set();
+      return this.products.filter(product => {
+        const duplicate = seen.has(product.id);
+        seen.add(product.id);
+        return !duplicate;
+      });
+    },
+  },
+  methods: {
+    addToCart() {
+      eventBus.emit('add-to-cart', this.product.id); // Gửi sự kiện với ID sản phẩm
+    },
   },
 };
 </script>

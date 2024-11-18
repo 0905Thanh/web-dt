@@ -3,19 +3,21 @@
   <div id="app">
     <ComHeader @open-login="showLoginModal" @open-register="showRegisterModal" />
     <router-view /> <!-- Đảm bảo có router-view ở đây -->
-    <ComHome />
+    <!-- <ComHome /> -->
     <ComFooter />
     <ComLogin v-if="isLoginModalVisible" @close="isLoginModalVisible = false" />
     <ComRegister v-if="isRegisterModalVisible" @close="isRegisterModalVisible = false" />
+    <!-- <ComCart /> -->
   </div>
 </template>
 
 <script>
 import ComHeader from './components/ComHeader.vue';
 import ComFooter from './components/ComFooter.vue';
-import ComHome from './components/ComHome.vue';
+// import ComHome from './components/ComHome.vue';
 import ComLogin from './components/ComLogin.vue';
 import ComRegister from './components/ComRegister.vue';
+// import ComCart from './components/ComCart.vue';
 
 // import eventBus from './eventBus'; // Import event bus
 
@@ -23,10 +25,11 @@ export default {
   name: 'App',
   components: {
     ComHeader,
-    ComHome,
+    // ComHome,
     ComFooter,
     ComLogin,
-    ComRegister
+    ComRegister,
+    // ComCart
   },
   data() {
     return {
