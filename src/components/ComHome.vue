@@ -4,19 +4,27 @@
     <h1>TẤT CẢ SẢN PHẨM</h1>
     <h2 class="menu-title">Khám Phá Sản Phẩm Của Chúng Tôi</h2>
     <div class="product-list">
-      <Product 
-        v-for="item in products" 
-        :key="item.id" 
-        :product="item" 
+      <Product
+        v-for="product in currentProducts"
+        :key="product.id"
+        :product="product"
       />
+    </div>
+    <div class="pagination">
+      <button @click="changepage(currentpage - 1)" :disabled="currentpage === 1">
+        Trang trước
+      </button>
+      <span>Trang {{ currentpage }} / {{ totalpages }}</span>
+      <button @click="changepage(currentpage + 1)" :disabled="currentpage >= totalpages">
+        Trang tiếp theo
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import Product from './ComProduct.vue'; // Đảm bảo import đúng component
-import items from '../data/items'; // Đảm bảo đường dẫn này đúng
-import eventBus from '../eventBus';
+import Product from './ComProduct.vue';
+import items from '../data/items'; // Giả sử items là danh sách sản phẩm
 
 export default {
   name: 'ComHome',
@@ -25,22 +33,25 @@ export default {
   },
   data() {
     return {
-      products: items, // Danh sách sản phẩm
+      products: items, // Danh sách sản phẩm (có thể có hơn 100 sản phẩm)
+      currentpage: 1,
+      limit: 8, // Số sản phẩm hiển thị trên mỗi trang
     };
   },
   computed: {
-    uniqueProducts() {
-      const seen = new Set();
-      return this.products.filter(product => {
-        const duplicate = seen.has(product.id);
-        seen.add(product.id);
-        return !duplicate;
-      });
+    currentProducts() {
+      const start = (this.currentpage - 1) * this.limit;
+      const end = start + this.limit;
+      return this.products.slice(start, end);
+    },
+    totalpages() {
+      return Math.ceil(this.products.length / this.limit);
     },
   },
   methods: {
-    addToCart() {
-      eventBus.emit('add-to-cart', this.product.id); // Gửi sự kiện với ID sản phẩm
+    changepage(page) {
+      if (page < 1 || page > this.totalpages) return; // Đảm bảo trang hợp lệ
+      this.currentpage = page;
     },
   },
 };
@@ -52,6 +63,16 @@ export default {
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 10px;
 }
 
 h1 {
