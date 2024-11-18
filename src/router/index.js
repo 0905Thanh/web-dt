@@ -1,3 +1,4 @@
+// src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
 import ComHeader from '@/components/ComHeader.vue';
 import ComHome from '../components/ComHome.vue';
@@ -6,9 +7,11 @@ import ComProduct from '@/components/ComProduct.vue';
 import ComKhuyenMai from '@/components/ComKhuyenMai.vue';
 import ComLienHe from '@/components/ComLienHe.vue';
 import ComGioiThieu from '@/components/ComGioiThieu.vue';
+import ComLogin from '@/components/ComLogin.vue';
+import ComRegister from '@/components/ComRegister.vue';
 const routes = [
   {
-    path: '/home', // Thay đổi đường dẫn để dễ hiểu hơn
+    path: '/', // Thay đổi đường dẫn để dễ hiểu hơn
     name: 'Home',
     component: ComHome
   },
@@ -43,10 +46,20 @@ const routes = [
     component: ComGioiThieu
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import('../views/AboutView.vue')
-  }
+    path: '/register',
+    name: 'Register',
+    component: ComRegister,
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: ComLogin,
+  },
+  // {
+  //   path: '/about',
+  //   name: 'about',
+  //   component: () => import('../views/AboutView.vue')
+  // }
 ];
 
 const router = createRouter({

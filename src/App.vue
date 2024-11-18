@@ -1,26 +1,46 @@
-
+<!-- App -->
 <template>
   <div id="app">
-    <ComHeader />  <!-- Sử dụng ComHeader tại đây -->
-    <router-view /> <!-- Nơi hiển thị các route -->
-    <ComHome /> 
-    <ComFooter />   <!-- Sử dụng ComFooter tại đây -->
+    <ComHeader @open-login="showLoginModal" @open-register="showRegisterModal" />
+    <router-view /> <!-- Đảm bảo có router-view ở đây -->
+    <ComHome />
+    <ComFooter />
+    <ComLogin v-if="isLoginModalVisible" @close="isLoginModalVisible = false" />
+    <ComRegister v-if="isRegisterModalVisible" @close="isRegisterModalVisible = false" />
   </div>
 </template>
-<script>
-// b1: import vào
 
-import ComHeader from './components/ComHeader.vue'
+<script>
+import ComHeader from './components/ComHeader.vue';
+import ComFooter from './components/ComFooter.vue';
 import ComHome from './components/ComHome.vue';
-import ComFooter from './components/ComFooter.vue'
+import ComLogin from './components/ComLogin.vue';
+import ComRegister from './components/ComRegister.vue';
+
+// import eventBus from './eventBus'; // Import event bus
+
 export default {
   name: 'App',
   components: {
-
     ComHeader,
     ComHome,
     ComFooter,
- 
+    ComLogin,
+    ComRegister
+  },
+  data() {
+    return {
+      isLoginModalVisible: false, // Trạng thái hiển thị modal login
+      isRegisterModalVisible: false // Trạng thái hiển thị modal register
+    };
+  },
+  methods: {
+    showLoginModal() {
+      this.isLoginModalVisible = true; // Mở modal login
+    },
+    showRegisterModal() {
+      this.isRegisterModalVisible = true; // Mở modal register
+    },
   }
 }
 </script>
