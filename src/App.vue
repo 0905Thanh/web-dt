@@ -1,53 +1,43 @@
-<!-- App -->
 <template>
   <div id="app">
     <ComHeader @open-login="showLoginModal" @open-register="showRegisterModal" />
     <router-view /> <!-- Đảm bảo có router-view ở đây -->
-    <!-- <ComHome /> -->
     <ComFooter />
     <ComLogin v-if="isLoginModalVisible" @close="isLoginModalVisible = false" />
     <ComRegister v-if="isRegisterModalVisible" @close="isRegisterModalVisible = false" />
-    <!-- <ComCart /> -->
   </div>
 </template>
 
 <script>
 import ComHeader from './components/ComHeader.vue';
 import ComFooter from './components/ComFooter.vue';
-// import ComHome from './components/ComHome.vue';
 import ComLogin from './components/ComLogin.vue';
 import ComRegister from './components/ComRegister.vue';
-// import ComCart from './components/ComCart.vue';
-
-// import eventBus from './eventBus'; // Import event bus
 
 export default {
   name: 'App',
   components: {
     ComHeader,
-    // ComHome,
     ComFooter,
     ComLogin,
     ComRegister,
-    // ComCart
   },
   data() {
     return {
-      isLoginModalVisible: false, // Trạng thái hiển thị modal login
-      isRegisterModalVisible: false // Trạng thái hiển thị modal register
+      isLoginModalVisible: false,
+      isRegisterModalVisible: false, 
     };
   },
   methods: {
     showLoginModal() {
-      this.isLoginModalVisible = true; // Mở modal login
+      this.isLoginModalVisible = true; 
     },
     showRegisterModal() {
-      this.isRegisterModalVisible = true; // Mở modal register
+      this.isRegisterModalVisible = true;
     },
-  }
-}
+  },
+};
 </script>
-
 
 <style>
 #app {

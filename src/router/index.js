@@ -10,6 +10,8 @@ import ComGioiThieu from '@/components/ComGioiThieu.vue';
 import ComLogin from '@/components/ComLogin.vue';
 import ComRegister from '@/components/ComRegister.vue';
 import ComCart from '@/components/ComCart.vue';
+// import ComLoginRegister from '@/components/ComLoginRegister.vue';
+
 
 const routes = [
   {

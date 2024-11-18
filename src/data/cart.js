@@ -1,5 +1,3 @@
-// src/data/cart.js
-
 import eventBus from '../eventBus';
 import items from './items'; // Import items để tham chiếu các sản phẩm
 
@@ -11,7 +9,10 @@ eventBus.on('add-to-cart', (productId) => {
   if (product) {
     const existingProduct = cart.find(item => item.id === productId);
     if (existingProduct) {
-      existingProduct.quantity++;
+      // Kiểm tra nếu số lượng hiện tại chưa đạt giới hạn tối đa
+      if (existingProduct.quantity < product.quantity) {
+        existingProduct.quantity++;
+      }
     } else {
       cart.push({
         ...product,
@@ -20,11 +21,13 @@ eventBus.on('add-to-cart', (productId) => {
     }
   }
 });
+
+// Lắng nghe sự kiện xóa sản phẩm khỏi giỏ hàng
 eventBus.on('remove-from-cart', (productId) => {
-    const index = cart.findIndex(item => item.id === productId);
-    if (index !== -1) {
-      cart.splice(index, 1); // Xóa sản phẩm khỏi giỏ hàng
-    }
-  });
+  const index = cart.findIndex(item => item.id === productId);
+  if (index !== -1) {
+    cart.splice(index, 1); // Xóa sản phẩm khỏi giỏ hàng
+  }
+});
 
 export default cart;
